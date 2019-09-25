@@ -1,0 +1,20 @@
+{
+	"name": "SWS Server Tag",
+	"version": "1.52",
+	"download_url": "https://github.com/ccharacter/sws-server-tag/archive/v1.52.zip",
+
+	"homepage": "https://ccharacter.com/custom-plugins/sws-server-tag/",
+	"requires": "5.2.3",
+	"tested": "5.2.3",
+	"last_updated": "2019-09-25 22:17:00",
+	"upgrade_notice": "Here's why you should upgrade...",
+
+	"author": "Sharon Stromberg",
+	"author_homepage": "http://ccharacter.com/",
+
+	"sections": {
+		"description": "This plugin is designed for contexts where a dev and production server are used, and there is a need to identify which you're looking at.",
+		"changelog": "Changelog. <p>I'm creating this plugin.</p>"
+	}
+
+}
