@@ -64,7 +64,7 @@ class AddNAD
     
 	public function init()
     {
-         add_action( 'plugins_loaded', array($this,'addGF') );
+         add_action( 'wp_loaded', array($this,'addGF') );
     }
 }
 
