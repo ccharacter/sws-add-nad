@@ -36,7 +36,9 @@ class AddNAD
 	
 	public function addGF() {
 		$old=get_option('gform_custom_choices');
-		$data = maybe_unserialize($old);
+		$data = maybe_unserialize($old); 
+		update_option('my_test',$data);
+		
 		$data[]=array('MY TITLE',array('One | 1','Two | 2','Three | 3'));
 		
 		update_option('gform_custom_choices',$data);
@@ -61,7 +63,7 @@ class AddNAD
     
 	public function init()
     {
-         add_action( 'init', array($this,'addGF') );
+         add_action( 'plugins_loaded', array($this,'addGF') );
     }
 }
 
