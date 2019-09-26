@@ -41,11 +41,12 @@ function sws_add_nad_data() {
 			$wpdb->replace( 
 				$table_name, 
 				array( 
-					'row_id' => 1, 
+					'row_id' => 2, 
 					'id' => "abc", 
-					'full_text' => "Alphabet", 
+					'full_text' => "Alphabet Soup", 
 					'u_tag' => "N",
-				) 
+				),
+				array(%d,%s,%s,%s)
 			);
 		//}
 	}
