@@ -29,20 +29,18 @@ register_activation_hook( __FILE__, 'sws_add_nad_table' );
 register_activation_hook( __FILE__, 'sws_add_nad_data' );
 
 
-	
-}
 
 
 class AddNAD
 {
 	
 	public function addGF() {
-	add_option('gform_custom_choices',array('One | 1','Two | 2','Three | 3'));
-}
+		add_option('gform_custom_choices',array('One | 1','Two | 2','Three | 3'));
+	}
 
 	public function addACF() {
 
-	
+	}
 	/*public function showTag($content) {
 		if ( (is_page('home')) || (is_page('about'))) {
 			return $content.'<span style="opacity:0.02">'.gethostname().'</span>';
