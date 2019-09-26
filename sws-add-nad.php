@@ -35,7 +35,11 @@ class AddNAD
 {
 	
 	public function addGF() {
-		update_option('gform_custom_choices',array('One | 1','Two | 2','Three | 3'));
+		$old=get_option('gform_custom_choices');
+		$data = maybe_unserialize($old);
+		$data[]=array('MY TITLE',array('One | 1','Two | 2','Three | 3'));
+		
+		update_option('gform_custom_choices',$data);
 		update_option('add_nad_test','I DID THIS AGAIN!');
 	}
 
