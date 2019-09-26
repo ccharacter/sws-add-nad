@@ -37,10 +37,10 @@ class AddNAD
 	public function addGF() {
 		$old=get_option('gform_custom_choices');
 		$data = maybe_unserialize($old); 
-		error_log(print_r($data,true),0);
 		//update_option('my_test',$data);
 		
-		//$data[]=array('MY TITLE',array('One | 1','Two | 2','Three | 3'));
+		$data[]=array('MY TITLE',array('One | 1','Two | 2','Three | 3'));
+		error_log(print_r($data,true),0);
 		
 		//update_option('gform_custom_choices',$data);
 		//update_option('add_nad_test','I DID THIS AGAIN!');
