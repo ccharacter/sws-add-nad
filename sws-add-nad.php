@@ -36,6 +36,7 @@ class AddNAD
 	
 	public function addGF() {
 		add_option('gform_custom_choices',array('One | 1','Two | 2','Three | 3'));
+		add_option('add_nad_test','I DID THIS!');
 	}
 
 	public function addACF() {
