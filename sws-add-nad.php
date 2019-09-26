@@ -34,7 +34,7 @@ register_activation_hook( __FILE__, 'sws_add_nad_data' );
 class AddNAD
 {
 	private $typeArr=array(
-		"nad-conf"->"NAD Conf",
+		"nad-conf"=>"NAD Conf",
 		"nad-conf-opt"=>"NAD Conf/Code",
 		"nad-conf-oth"=>"NAD Conf+Oth",
 		"nad-conf-oth-opt"=>"NAD Conf/Code+Oth",
