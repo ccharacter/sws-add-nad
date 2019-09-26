@@ -20,7 +20,7 @@ require_once plugin_dir_path(__FILE__).'inc/plugin-update-checker/plugin-update-
 $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 	'https://raw.githubusercontent.com/ccharacter/sws-server-tag/master/plugin.json',
 	__FILE__,
-	'sws-server-tag'
+	'sws-add-nad'
 );
 
 require_once("func_table.php");
