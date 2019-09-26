@@ -46,7 +46,7 @@ function sws_add_nad_data() {
 					'full_text' => "Alphabet Soup", 
 					'u_tag' => "N",
 				),
-				array(%d,%s,%s,%s)
+				array('%d','%s','%s','%s')
 			);
 		//}
 	}
