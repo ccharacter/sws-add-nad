@@ -51,9 +51,10 @@ class AddNAD
 		$old=get_option('gform_custom_choices');
 		$data = maybe_unserialize($old); 
 		if (!(array_key_exists($title,$data))) {
-			$data[$title]=getGFOpts(explode("-",$class));
+			$parts=explode("-",$class);
+			$data[$title]=getGFOpts($parts);
 		
-			//error_log(print_r($data,true),0);
+			error_log($class." | ".$title,0);
 		
 			//update_option('gform_custom_choices',$data);
 		}
