@@ -81,6 +81,7 @@ class AddNAD
 	}
 	
 	public function addGF() {
+		global $typeArr;
 		foreach ($typeArr as $class=>$title) { 
 			addGFCustom($class,$title);
 		}
