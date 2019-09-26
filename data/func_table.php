@@ -36,19 +36,18 @@ function sws_add_nad_data() {
 		
 		fclose($fp);
 		
-		print_r($csvArray);
 		
-		foreach ($csvArray as $tmp) {	
+		//foreach ($csvArray as $tmp) {	
 			$wpdb->replace( 
 				$table_name, 
 				array( 
-					'row_id' => $tmp['row_id'], 
-					'id' => $tmp['id'], 
-					'full_text' => $tmp['full_text'], 
-					'u_tag' => $tmp['u_tag'],
+					'row_id' => 1, 
+					'id' => "abc", 
+					'full_text' => "Alphabet", 
+					'u_tag' => "N",
 				) 
 			);
-		}
+		//}
 	}
 
 }
