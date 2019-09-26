@@ -1,8 +1,8 @@
-# SWS Server Tag
+# SWS Add NAD
 Contributors: ccharacter
 Tags: plugin, login
 Requires at least: 5.2
-Requires PHP: 7.2
+Requires PHP: 5.2
 Tested up to: 5.2
 Stable tag: master
 License: GPLv2 or later
@@ -10,7 +10,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 ## Description
 
-Sharon's custom plugin for identifying the server
+Sharon's custom plugin for adding NAD entities to ACF and GF
 
 ## GitHub
 * GitHub Plugin URI
