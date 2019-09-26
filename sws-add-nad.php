@@ -64,7 +64,7 @@ class AddNAD
     
 	public function init()
     {
-         register_activation_hook( __FILE__, 'addGF' );
+         register_activation_hook( __FILE__,  array($this,'addGF') );
     }
 }
 
