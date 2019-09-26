@@ -23,7 +23,7 @@ $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 	'sws-add-nad'
 );
 
-require_once("func_table.php");
+require_once("/data/func_table.php");
 
 register_activation_hook( __FILE__, 'sws_add_nad_table' );
 register_activation_hook( __FILE__, 'sws_add_nad_data' );
