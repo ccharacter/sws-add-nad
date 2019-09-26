@@ -33,7 +33,7 @@ register_activation_hook( __FILE__, 'sws_add_nad_data' );
 
 class AddNAD
 {
-	public $typeArr=array(
+	private $typeArr=array(
 		"nad-conf"=>"NAD Conf",
 		"nad-conf-opt"=>"NAD Conf/Code",
 		"nad-conf-oth"=>"NAD Conf+Oth",
@@ -82,8 +82,7 @@ class AddNAD
 	}
 	
 	public function addGF() {
-		global $typeArr;
-		foreach ($typeArr as $class=>$title) { 
+		foreach ($this->$typeArr as $class=>$title) { 
 			addGFCustom($class,$title);
 		}
 	}
