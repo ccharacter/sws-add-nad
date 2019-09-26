@@ -21,9 +21,10 @@ function sws_add_nad_table() {
 function sws_add_nad_data() {
 	global $wpdb;
 
-	$table_name = $wpdb->prefix . 'sws_add_nad';	
+	$table_name = $wpdb->prefix . 'sws_add_nad';
 	
-	$file= 'nad_entities.csv';
+	
+	$file= plugin_dir_path(__FILE__)."data/nad_entities.csv";
 	//echo $file;
 	$fp = fopen($file, 'r');
 	if ($fp) {
