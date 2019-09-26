@@ -29,18 +29,21 @@ register_activation_hook( __FILE__, 'sws_add_nad_table' );
 register_activation_hook( __FILE__, 'sws_add_nad_data' );
 
 
-function addGF() {
-	
-}
-
-function addACF() {
 	
 }
 
 
-/*class AddNAD
+class AddNAD
 {
-	public function showTag($content) {
+	
+	public function addGF() {
+	add_option('gform_custom_choices',array('One | 1','Two | 2','Three | 3'));
+}
+
+	public function addACF() {
+
+	
+	/*public function showTag($content) {
 		if ( (is_page('home')) || (is_page('about'))) {
 			return $content.'<span style="opacity:0.02">'.gethostname().'</span>';
 		} else { 
@@ -51,17 +54,16 @@ function addACF() {
     public function register($atts, $content = null)
     {
         return '<span style="opacity:0.02">'.gethostname().'</span>';
-    }
+    }*/
     
 	public function init()
     {
-        add_shortcode('sws_server_tag', array($this, 'register'));
-		add_action('the_content',array($this,'showTag'));
+         add_action( 'plugins_loaded', 'addGF' );
     }
 }
 
 
 $myVal=new AddNAD();
-$myVal->init();*/
+$myVal->init();
 
 ?>
