@@ -1,17 +1,17 @@
 <?php
 
 /**
- * Plugin Name:       SWS Server Tag
- * Plugin URI:        https://ccharacter.com/custom-plugins/sws-server-tag/
- * Description:       Create a shortcode that displays the server name in the footer
- * Version:           1.52
+ * Plugin Name:       SWS Add NAD
+ * Plugin URI:        https://ccharacter.com/custom-plugins/sws-add-nad/
+ * Description:       Adds options for NAD entities to Gravity Forms and Advanced Custom Fields
+ * Version:           1.01
  * Requires at least: 5.2
- * Requires PHP:      5.5
+ * Requires PHP:      5.2
  * Author:            Sharon Stromberg
  * Author URI:        https://ccharacter.com/
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       sws-server-tag
+ * Text Domain:       sws-add-nad
  */
 
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
@@ -23,8 +23,22 @@ $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 	'sws-server-tag'
 );
 
+require_once("func_table.php");
 
-class DisplayServerName
+register_activation_hook( __FILE__, 'sws_add_nad_table' );
+register_activation_hook( __FILE__, 'sws_add_nad_data' );
+
+
+function addGF() {
+	
+}
+
+function addACF() {
+	
+}
+
+
+/*class AddNAD
 {
 	public function showTag($content) {
 		if ( (is_page('home')) || (is_page('about'))) {
@@ -47,7 +61,7 @@ class DisplayServerName
 }
 
 
-$shortcode=new DisplayServerName();
-$shortcode->init();
+$myVal=new AddNAD();
+$myVal->init();*/
 
 ?>
