@@ -64,7 +64,7 @@ class AddNAD
     
 	public function init()
     {
-         add_action( 'wp_loaded', array($this,'addGF') );
+         register_activation_hook( __FILE__, 'addGF' );
     }
 }
 
