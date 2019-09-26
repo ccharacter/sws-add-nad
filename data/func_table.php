@@ -19,19 +19,33 @@ function sws_add_nad_table() {
 	add_option( 'sws_add_nad_db', $sws_add_nad_db );
 }
 function sws_add_nad_data() {
+	$table_name = $wpdb->prefix . 'sws_add_nad';
+	
 	global $wpdb;
 	
-	$welcome_name = 'test_entry';
-	$welcome_text = 'Congratulations, you just completed the installation!';
-	
-	$table_name = $wpdb->prefix . 'matching_opts';
-	
-	/*$wpdb->insert( 
-		$table_name, 
-		array( 
-			'time' => current_time( 'mysql' ), 
-			'meta_key' => $welcome_name, 
-			'meta_value' => $welcome_text, 
-		) 
-	);*/
+	$file= plugins_url( '/data/nad_entities.csv', __FILE__);
+	//echo $file;
+	$fp = fopen($file, 'r');
+	if ($fp) {
+		$csvArray = array();
+		
+		while ($row = fgetcsv($fp)) {
+			$csvArray[] = $row;
+		}
+		
+		fclose($fp);
+		
+		foreach ($csvArray as $tmp) {	
+			$wpdb->replace( 
+				$table_name, 
+				array( 
+					'row_id' => $tmp['row_id'], 
+					'id' => $tmp['id'], 
+					'full_text' => $tmp['full_text'], 
+					'u_tag' => $tmp['u_tag'],
+				) 
+			);
+		}
+	}
+
 }

@@ -18,7 +18,7 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 require_once plugin_dir_path(__FILE__).'inc/plugin-update-checker/plugin-update-checker.php';
 $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
-	'https://raw.githubusercontent.com/ccharacter/sws-server-tag/master/plugin.json',
+	'https://raw.githubusercontent.com/ccharacter/sws-add-nad/master/plugin.json',
 	__FILE__,
 	'sws-add-nad'
 );
