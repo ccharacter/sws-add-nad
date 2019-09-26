@@ -38,7 +38,7 @@ function sws_add_nad_data() {
 		
 		
 		//foreach ($csvArray as $tmp) {	
-			$tmp=$csvArray[0];
+			$tmp=$csvArray[1]; print_r($tmp);
 			$wpdb->replace( 
 				$table_name, 
 				array( 
