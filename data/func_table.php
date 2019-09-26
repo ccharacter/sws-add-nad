@@ -7,7 +7,7 @@ function sws_add_nad_table() {
 	$table_name = $wpdb->prefix . 'sws_add_nad';
 	
 	$charset_collate = $wpdb->get_charset_collate();
-	$sql = "CREATE TABLE $table_name (
+	$sql = "CREATE TABLE IF NOT EXISTS $table_name (
 	  `row_id` int(11) NOT NULL AUTO_INCREMENT,
 	  `id` char(6) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL DEFAULT '',
 	  `full_text` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
@@ -19,9 +19,9 @@ function sws_add_nad_table() {
 	add_option( 'sws_add_nad_db', $sws_add_nad_db );
 }
 function sws_add_nad_data() {
-	$table_name = $wpdb->prefix . 'sws_add_nad';
-	
 	global $wpdb;
+
+	$table_name = $wpdb->prefix . 'sws_add_nad';	
 	
 	$file= plugins_url( '/data/nad_entities.csv', __FILE__);
 	//echo $file;
@@ -34,6 +34,8 @@ function sws_add_nad_data() {
 		}
 		
 		fclose($fp);
+		
+		print_r($csvArray);
 		
 		foreach ($csvArray as $tmp) {	
 			$wpdb->replace( 
