@@ -42,10 +42,10 @@ function sws_add_nad_data() {
 			$wpdb->replace( 
 				$table_name, 
 				array( 
-					'row_id' => 1, 
-					'id' => "test", 
+					'row_id' => intval($tmp[0]), 
+					'id' => $tmp[1], 
 					'full_text' => $tmp[2], 
-					'u_tag' => "X",
+					'u_tag' => $tmp[3],
 				),
 				array('%d','%s','%s','%s')
 			);
