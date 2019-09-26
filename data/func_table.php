@@ -38,13 +38,14 @@ function sws_add_nad_data() {
 		
 		
 		//foreach ($csvArray as $tmp) {	
+			$tmp=$csvArray[0];
 			$wpdb->replace( 
 				$table_name, 
 				array( 
-					'row_id' => 2, 
-					'id' => "abc", 
-					'full_text' => "Alphabet Soup", 
-					'u_tag' => "N",
+					'row_id' => $tmp[0], 
+					'id' => $tmp[1], 
+					'full_text' => $tmp[2], 
+					'u_tag' => $tmp[3],
 				),
 				array('%d','%s','%s','%s')
 			);
