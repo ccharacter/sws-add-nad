@@ -50,41 +50,58 @@ class AddNAD
 	public function addGFCustom($class,$title) {
 		$old=get_option('gform_custom_choices');
 		$data = maybe_unserialize($old); 
-		if (!(array_key_exists($title,$data))) {
+		if (array_key_exists($title,$data)) { // if it's there, wipe it out
+			unset($data[$title]);
+		}	
+
+		if (!(array_key_exists($title,$data))) { // add it
 			$parts=explode("-",$class);
-			$data[$title]=getGFOpts($parts);
+			$data[$title]=$this->getGFOpts($parts);
 		
-			error_log($class." | ".$title,0);
+			//error_log(print_r($data,true),0);
+			//error_log($class." | ".$title,0);
 		
-			//update_option('gform_custom_choices',$data);
+			update_option('gform_custom_choices',$data);
 		}
 	}
 	
 	public function getGFOpts($arr) {
 		global $wpdb;
 		$table_name = $wpdb->prefix . 'sws_add_nad';
-		
-		switch($arr[1]) {
+	
+		$one=$arr[1]; $othTxt="OTHER--NOT ON THIS LIST";
+		if (isset($arr[2])) { $two=$arr[2]; } else { $two="";}
+		if (isset($arr[3])) { $three=$arr[3]; } else {$three=""; }	
+
+		switch($one) {
 				case("conf"): $cond="where `u_tag`='N'"; break;
 				case("union"): $cond="where `u_tag`='Y'"; break;
 				default: $cond=""; break;
 		}
-		if (($arr[2]=="opt") || ($arr[3]=="opt")) { $col="concat(`full_text`,'|',`id`)"; } 
+		if (($two=="opt") || ($three=="opt")) { $col="concat(`full_text`,'|',`id`) as full_text "; $othTxt.="|X"; } 
 			else { $col="`full_text`";}
 			
 		$sql="select $col from $table_name $cond order by `full_text`";
-		$results = $wpdb->get_results($sql);
+		$results = $wpdb->get_results($sql,ARRAY_A);
 		
-		error_log(print_r($results,true),0);
-		
-		return $results;
-		
+		//error_log(print_r($results,true),0);
+		$optArr=array(); 
+		foreach ($results as $row) { $optArr[]=$row['full_text']; }	
+
+		if (($two=="oth") || ($three=="oth")) { $optArr[]=$othTxt; }	
+	
+		return $optArr;
 	}
 	
 	public function addGF() {
-		foreach ($this->$typeArr as $class=>$title) { 
-			addGFCustom($class,$title);
+		//$k=0;
+		foreach ($this->typeArr as $class=>$title) { 
+			//if ($k<2) { // process first 2 only
+				$this->addGFCustom($class,$title);
+			//	$k++;
+			//}
 		}
+
 	}
 
 	public function addACF() {
