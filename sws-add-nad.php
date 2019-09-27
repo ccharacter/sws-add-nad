@@ -4,7 +4,7 @@
  * Plugin Name:       SWS Add NAD
  * Plugin URI:        https://ccharacter.com/custom-plugins/sws-add-nad/
  * Description:       Adds options for NAD entities to Gravity Forms and Advanced Custom Fields
- * Version:           1.33
+ * Version:           1.35
  * Requires at least: 5.2
  * Requires PHP:      5.2
  * Author:            Sharon Stromberg
@@ -131,6 +131,17 @@ $myVal=new AddNAD();
 $myVal->init();
 
 
+function my_acf_load_field( $field ) {
+	
+	error_log(print_r($field,true),0);
+    /*$field['choices'] = array(
+        'custom' => 'My Custom Choice'
+    );*/
 
+    return $field;
+    
+}
+
+add_filter('acf/load_field', 'my_acf_load_field');
 
 ?>
