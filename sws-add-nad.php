@@ -28,7 +28,21 @@ require_once plugin_dir_path(__FILE__)."data/func_table.php";
 register_activation_hook( __FILE__, 'sws_add_nad_table' );
 register_activation_hook( __FILE__, 'sws_add_nad_data' );
 
-
+/*global $typeArr;
+$typeArr=array(
+                "nad-conf"=>"NAD Conf",
+                "nad-conf-opt"=>"NAD Conf/Code",
+                "nad-conf-oth"=>"NAD Conf+Oth",
+                "nad-conf-oth-opt"=>"NAD Conf/Code+Oth",
+                "nad-union"=>"NAD Union",
+                "nad-union-opt"=>"NAD Union/Code",
+                "nad-union-oth"=>"NAD Union+Oth",
+                "nad-union-oth-opt"=>"NAD Union/Code+Oth",
+                "nad-all"=>"NAD Unions & Confs",
+                "nad-all-opt"=>"NAD Unions & Confs/Code",
+                "nad-all-oth"=>"NAD Unions & Confs+Oth",
+                "nad-all-oth-opt"=>"NAD Unions & Confs/Code +Oth");
+*/
 
 
 class AddNAD
@@ -56,7 +70,7 @@ class AddNAD
 
 		if (!(array_key_exists($title,$data))) { // add it
 			$parts=explode("-",$class);
-			$data[$title]=$this->getGFOpts($parts);
+			$data[$title]=$this->getOpts($parts)[0];
 		
 			//error_log(print_r($data,true),0);
 			//error_log($class." | ".$title,0);
@@ -65,7 +79,7 @@ class AddNAD
 		}
 	}
 	
-	public function getGFOpts($arr) {
+	public function getOpts($arr) {
 		global $wpdb;
 		$table_name = $wpdb->prefix . 'sws_add_nad';
 	
@@ -78,23 +92,30 @@ class AddNAD
 				case("union"): $cond="where `u_tag`='Y'"; break;
 				default: $cond=""; break;
 		}
-		if (($two=="opt") || ($three=="opt")) { $col="concat(`full_text`,'|',`id`) as full_text "; $othTxt.="|X"; } 
-			else { $col="`full_text`";}
+		if (($two=="opt") || ($three=="opt")) { $col="concat(`full_text`,'|',`id`) as full_text, `full_text` as label, `id` as value "; $othTxt.="|X"; } 
+			else { $col="`full_text`, `full_text` as label, `full_text` as value"; }
 			
 		$sql="select $col from $table_name $cond order by `full_text`";
 		$results = $wpdb->get_results($sql,ARRAY_A);
 		
 		//error_log(print_r($results,true),0);
-		$optArr=array(); 
-		foreach ($results as $row) { $optArr[]=$row['full_text']; }	
+		$gfArr=array(); $acfArr=array(); 
+		foreach ($results as $row) { 
+			$gfArr[]=$row['full_text']; 
+			$acfArr[$row['value']]=$row['label']; 
+		}	
 
-		if (($two=="oth") || ($three=="oth")) { $optArr[]=$othTxt; }	
+		if (($two=="oth") || ($three=="oth")) { 
+			$gfArr[]=$othTxt; 
+			$acfArr[$row['value']]=$row['label'];
+		}	
 	
-		return $optArr;
+		$retArr[]=$gfArr; $retArr[]=$acfArr;
+		return $retArr;
 	}
 	
-	public function addGF() {
-		//$k=0;
+/*	public function addGF() {
+		//global $typeArr;
 		foreach ($this->typeArr as $class=>$title) { 
 			//if ($k<2) { // process first 2 only
 				$this->addGFCustom($class,$title);
@@ -107,6 +128,7 @@ class AddNAD
 	public function addACF() {
 
 	}
+*/
 	/*public function showTag($content) {
 		if ( (is_page('home')) || (is_page('about'))) {
 			return $content.'<span style="opacity:0.02">'.gethostname().'</span>';
@@ -119,11 +141,33 @@ class AddNAD
     {
         return '<span style="opacity:0.02">'.gethostname().'</span>';
     }*/
-    
+   
+
+	public static function gen_acf_opts($fieldObj,$myVal) {
+		if ((isset($fieldObj['choices'])) && (is_array($fieldObj['choices'])) ) {
+			$choices=$fieldObj['choices'];
+		} else { $choices=array();}	
+
+		$class=$fieldObj['wrapper']['class'];
+		if (array_key_exists($class,$myVal->typeArr)) {
+			$arr=explode("-",$class);
+			$choices=$myVal->getOpts($arr)[1];
+			/*switch($class) {
+				case "nad-conf-opt": $choices['OPTval']="OPT Label"; break;
+				default: $choices['value']='Label'; break;		
+
+			}*/
+		}
+		return $choices;
+	}
+ 
 	public function init()
-    {
-         register_activation_hook( __FILE__,  array($this,'addGF') );
-    }
+    	{
+	    register_activation_hook( __FILE__,  array($this,'addGF') );
+    	}
+
+
+
 }
 
 
@@ -131,17 +175,26 @@ $myVal=new AddNAD();
 $myVal->init();
 
 
-function my_acf_load_field( $field ) {
+function sws_add_nad_acf( $field ) {
+	global $myVal;
 	
-	error_log(print_r($field,true),0);
-    /*$field['choices'] = array(
-        'custom' => 'My Custom Choice'
-    );*/
+	/*if ((isset($field['choices'])) && (is_array($field['choices'])) ) {
+		error_log(print_r($field['choices'],true),0);
+	}*/
+        
+	$field['choices']=$myVal->gen_acf_opts($field,$myVal); 
 
-    return $field;
-    
+        /*if ((isset($field['choices'])) && (is_array($field['choices'])) ) {
+
+		error_log(print_r($field['choices'],true),0);
+        }*/
+
+	return $field;
+
 }
 
-add_filter('acf/load_field', 'my_acf_load_field');
+
+add_filter('acf/load_field', 'sws_add_nad_acf');
+
 
 ?>
