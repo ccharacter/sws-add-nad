@@ -1,10 +1,10 @@
 {
 	"name": "SWS Add NAD",
-	"version": "1.36",
-	"download_url": "https://github.com/ccharacter/sws-add-nad/archive/v1.36.zip",
+	"version": "1.4",
+	"download_url": "https://github.com/ccharacter/sws-add-nad/archive/v1.4.zip",
 
 	"homepage": "https://ccharacter.com/custom-plugins/sws-add-nad/",
-	"requires": "5.2.3",
+	"requires": "5.2",
 	"tested": "5.2.3",
 	"last_updated": "2019-09-25 22:17:00",
 	"upgrade_notice": "Here's why you should upgrade...",
@@ -14,7 +14,7 @@
 
 	"sections": {
 		"description": "This plugin is designed to add NAD entities to choices for Gravity Forms and Advanced Custom Fields.",
-		"how to use": "For ACF, you should apply one of the following styles: <br /><br />* nad-conf: conference names only, alphabetized <br />* nad-conf-oth: same as above, with \"OTHER - NOT ON THIS LIST\" option<br />* nad-union: union names only, alphabetized<br />* nad-union-oth: same as above, with \"OTHER - NOT ON THIS LIST\" option<br />* nad-conf-opt: conference names, with code values<br />* nad-conf-opt-oth: same as above, with \"OTHER - NOT ON THIS LIST\" option<br />* nad-union-opt: union names, with code values<br />* nad-union-opt-oth: same as above, with \"OTHER - NOT ON THIS LIST\" option<br />* nad-all: all conferences and unions, alphabetized<br />* nad-all-oth: same as above, with \"OTHER - NOT ON THIS LIST\" option<br />* nad-all-opt: all conferences and unions, with code values<br />* nad-all-opt-oth: same as above, with \"OTHER - NOT ON THIS LIST\" option<br /><br />For Gravity Forms, the above options should show up when you click the BULK ADD button for a select or checkbox group."
+		"how to use": "For ACF, you should apply one of the following styles: <br /><br />* nad-conf: conference names only, alphabetized <br />* nad-conf-oth: same as above, with 'OTHER - NOT ON THIS LIST' option<br />* nad-union: union names only, alphabetized<br />* nad-union-oth: same as above, with 'OTHER - NOT ON THIS LIST' option<br />* nad-conf-opt: conference names, with code values<br />* nad-conf-opt-oth: same as above, with 'OTHER - NOT ON THIS LIST' option<br />* nad-union-opt: union names, with code values<br />* nad-union-opt-oth: same as above, with 'OTHER - NOT ON THIS LIST' option<br />* nad-all: all conferences and unions, alphabetized<br />* nad-all-oth: same as above, with 'OTHER - NOT ON THIS LIST' option<br />* nad-all-opt: all conferences and unions, with code values<br />* nad-all-opt-oth: same as above, with 'OTHER - NOT ON THIS LIST' option<br /><br />For Gravity Forms, the above options should show up when you click the BULK ADD button for a select or checkbox group."
 
 	}
 
