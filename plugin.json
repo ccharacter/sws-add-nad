@@ -14,7 +14,7 @@
 
 	"sections": {
 		"description": "This plugin is designed to add NAD entities to choices for Gravity Forms and Advanced Custom Fields.",
-		"how to use": "For ACF, you should apply one of the following styles.",
+		"guidelines": "For ACF, you should apply one of the following styles.",
 
 	}
 
