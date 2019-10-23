@@ -14,7 +14,7 @@
 
 	"sections": {
 		"description": "This plugin is designed to add NAD entities to choices for Gravity Forms and Advanced Custom Fields.",
-		"guidelines": "For ACF, you should apply one of the following styles. <ul><li>One</li><li>Two</li></ul>"
+		"how-to": "For ACF, you should apply one of the following styles. <ul><li>nad-conf: conference names only, alphabetized</li><li>nad-conf-oth: same as above, with OTHER - NOT ON THIS LIST option</li></ul>"
 
 	}
 
