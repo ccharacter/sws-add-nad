@@ -14,7 +14,7 @@
 
 	"sections": {
 		"description": "This plugin is designed to add NAD entities to choices for Gravity Forms and Advanced Custom Fields.",
-		"how-to": "For ACF, you should apply one of the following styles. <ul><li>nad-conf: conference names only, alphabetized</li><li>nad-conf-oth: same as above, with OTHER - NOT ON THIS LIST option</li></ul>"
+		"how-to": "For ACF, you can apply one of the following styles. <ul><li>nad-conf: conference names only, alphabetized</li><li>nad-conf-oth: same as above, with OTHER - NOT ON THIS LIST option</li><li>nad-union: union names only, alphabetized</li><li>nad-union-oth: same as above, with OTHER - NOT ON THIS LIST option</li><li>nad-conf-opt: conference names, with code values</li><li>nad-conf-opt-oth: same as above, with OTHER - NOT ON THIS LIST option</li><li>nad-union-opt: union names, with code values</li><li>nad-union-opt-oth: same as above, with OTHER - NOT ON THIS LIST option</li><li>nad-all: all conferences and unions, alphabetized</li><li>nad-all-oth: same as above, with OTHER - NOT ON THIS LIST option</li><li>nad-all-opt: all conferences and unions, with code values</li><li>nad-all-opt-oth: same as above, with OTHER - NOT ON THIS LIST option</li></ul>For Gravity Forms, they should show up when you click the BULK ADD button for a select or checkbox group."
 
 	}
 
