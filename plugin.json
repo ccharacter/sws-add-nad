@@ -1,7 +1,7 @@
 {
 	"name": "SWS Add NAD",
-	"version": "1.6",
-	"download_url": "https://github.com/ccharacter/sws-add-nad/archive/v1.6.zip",
+	"version": "1.62",
+	"download_url": "https://github.com/ccharacter/sws-add-nad/archive/v1.62.zip",
 
 	"homepage": "https://ccharacter.com/custom-plugins/sws-add-nad/",
 	"requires": "5.2",
