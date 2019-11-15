@@ -4,7 +4,7 @@
  * Plugin Name:       SWS Add NAD
  * Plugin URI:        https://ccharacter.com/custom-plugins/sws-add-nad/
  * Description:       Adds options for NAD entities to Gravity Forms and Advanced Custom Fields
- * Version:           1.5
+ * Version:           1.52
  * Requires at least: 5.2
  * Requires PHP:      5.2
  * Author:            Sharon Stromberg
