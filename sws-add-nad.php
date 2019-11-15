@@ -4,7 +4,7 @@
  * Plugin Name:       SWS Add NAD
  * Plugin URI:        https://ccharacter.com/custom-plugins/sws-add-nad/
  * Description:       Adds options for NAD entities to Gravity Forms and Advanced Custom Fields
- * Version:           1.54
+ * Version:           1.6
  * Requires at least: 5.2
  * Requires PHP:      5.2
  * Author:            Sharon Stromberg
@@ -64,18 +64,21 @@ class AddNAD
 	public function addGFCustom($class,$title) {
 		$old=get_option('gform_custom_choices');
 		$data = maybe_unserialize($old); 
-		if (array_key_exists($title,$data)) { // if it's there, wipe it out
-			unset($data[$title]);
-		}	
+		
+		foreach ($myVal->typeArr as $class=>$title) {
+			if (array_key_exists($title,$data)) { // if it's there, wipe it out
+				unset($data[$title]);
+			}	
 
-		if (!(array_key_exists($title,$data))) { // add it
-			$parts=explode("-",$class);
-			$data[$title]=$this->getOpts($parts)[0];
-		
-			//error_log(print_r($data,true),0);
-			//error_log($class." | ".$title,0);
-		
-			update_option('gform_custom_choices',$data);
+			if (!(array_key_exists($title,$data))) { // add it
+				$parts=explode("-",$class);
+				$data[$title]=$this->getOpts($parts)[0];
+			
+				//error_log(print_r($data,true),0);
+				//error_log($class." | ".$title,0);
+			
+				update_option('gform_custom_choices',$data);
+			}
 		}
 	}
 	
@@ -114,35 +117,6 @@ class AddNAD
 		return $retArr;
 	}
 	
-/*	public function addGF() {
-		//global $typeArr;
-		foreach ($this->typeArr as $class=>$title) { 
-			//if ($k<2) { // process first 2 only
-				$this->addGFCustom($class,$title);
-			//	$k++;
-			//}
-		}
-
-	}
-
-	public function addACF() {
-
-	}
-*/
-	/*public function showTag($content) {
-		if ( (is_page('home')) || (is_page('about'))) {
-			return $content.'<span style="opacity:0.02">'.gethostname().'</span>';
-		} else { 
-			return $content;
-		}
-	}
-	
-    public function register($atts, $content = null)
-    {
-        return '<span style="opacity:0.02">'.gethostname().'</span>';
-    }*/
-   
-
 	public static function gen_acf_opts($fieldObj,$myVal) {
 		if ((isset($fieldObj['choices'])) && (is_array($fieldObj['choices'])) ) {
 			$choices=$fieldObj['choices'];

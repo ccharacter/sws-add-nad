@@ -1,13 +1,13 @@
 {
 	"name": "SWS Add NAD",
-	"version": "1.54",
-	"download_url": "https://github.com/ccharacter/sws-add-nad/archive/v1.54.zip",
+	"version": "1.6",
+	"download_url": "https://github.com/ccharacter/sws-add-nad/archive/v1.6.zip",
 
 	"homepage": "https://ccharacter.com/custom-plugins/sws-add-nad/",
 	"requires": "5.2",
-	"tested": "5.2.4",
+	"tested": "5.3",
 	"last_updated": "2019-10-22 22:17:00",
-	"upgrade_notice": "Here's why you should upgrade...",
+	"upgrade_notice": "The latest version *SHOULD* have the fewest errors. ;-)",
 
 	"author": "Sharon Stromberg",
 	"author_homepage": "http://ccharacter.com/",
